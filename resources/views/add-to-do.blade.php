@@ -14,7 +14,27 @@
                         </div>
                     @endif
 
-                    {{ __('This is to do page') }}
+                    <form>
+                        <div class="mb-3">
+                          <label for="taskTitle" class="form-label">Task Title</label>
+                          <input type="text" class="form-control" id="taskTitle" placeholder="Enter Task Title" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskDescription" class="form-label">Task Description</label>
+                            {{-- <input type="text" class="form-control" id="taskDescription" placeholder="Describe the task" required> --}}
+                            <textarea class="form-control" id="taskDescription" rows="3" placeholder="Describe the task" required></textarea>    
+                        </div>
+                        <div class="mb-3">
+                            <label for="taskPriority" class="form-label">Task Priority</label>
+                                <select class="form-select" id="taskPriority" required>
+                                    <option selected disabled>Select Priority</option>
+                                    <option value="low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="high">High</option>
+                              </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Add Task</button>
+                      </form>
                 </div>
             </div>
         </div>
