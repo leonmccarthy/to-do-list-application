@@ -34,7 +34,7 @@ class TaskController extends Controller
 
     // VIEW TASKS
     public function viewAllTask(){
-        $tasks = Task::all();
+        $tasks = Task::where('taskOwner', '=', Auth::user()->name)->get();
         return view('view-to-do-tasks', compact('tasks'));
     }
 }

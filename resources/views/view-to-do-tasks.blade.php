@@ -20,33 +20,35 @@
                         </div>
                     @endif
 
-                    <table class="table">
+                    <table class="table table-hover">
                         <thead>
                           <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Action</th>
                           </tr>
                         </thead>
                         <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
+                          @foreach ($tasks as $task)
+                            <tr>
+                              <th scope="row">{{ $task->taskTitle }}</th>
+                              <td>{{ $task->taskDescription }}</td>
+                              @if ($task->taskPriority == 'high')
+                                <td><span class="badge rounded-pill text-bg-danger">High</span></td>
+                              @elseif ($task->taskPriority == 'medium')
+                                <td><span class="badge rounded-pill text-bg-warning">Medium</span></td>
+                              @elseif ($task->taskPriority == 'low')
+                                <td><span class="badge rounded-pill text-bg-success">Low</span></td>
+                              @endif
+
+                              <td>
+                                <a href="#" class="btn btn-outline-primary">Edit</a>
+                                <a href="#" class="btn btn-outline-danger">Delete</a>
+                              </td>
+                            </tr>
+                          @endforeach
+                          
                         </tbody>
                       </table>
                 </div>
