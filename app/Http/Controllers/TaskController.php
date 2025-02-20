@@ -37,4 +37,10 @@ class TaskController extends Controller
         $tasks = Task::where('taskOwner', '=', Auth::user()->name)->get();
         return view('view-to-do-tasks', compact('tasks'));
     }
+
+    // EDIT TASK VIEW
+    public function editTaskView($id){
+        $task = Task::find($id);
+        return view('edit-tasks', compact('task'));
+    }
 }

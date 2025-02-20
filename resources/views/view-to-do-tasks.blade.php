@@ -43,7 +43,7 @@
                               @endif
 
                               <td>
-                                <a href="#" class="btn btn-outline-primary">Edit</a>
+                                <a href="{{ route('edit-task-view', $task->id) }}" class="btn btn-outline-primary">Edit</a>
                                 <a href="#" class="btn btn-outline-danger">Delete</a>
                               </td>
                             </tr>
