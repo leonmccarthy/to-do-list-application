@@ -20,5 +20,8 @@ Route::middleware('auth')->group(function(){
     
     // PERFORM ADD TASK FUNCTION
     Route::post('/add-to-do', [TaskController::class, 'addTask'])->name('add-to-do-action');
+
+    // VIEW TO DO TASKS
+    Route::get('/my-tasks', [TaskController::class, 'viewAllTask'])->name('my-tasks');
 });
 

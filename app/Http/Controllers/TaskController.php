@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Validator;
 
 class TaskController extends Controller
 {
-    //
+    //ADD TASK
     public function addTask(Request $request){
 
             $validator = Validator::make($request->all(), [
@@ -30,5 +30,11 @@ class TaskController extends Controller
 
                 return redirect()->route('home')->with('success', 'Task added successfully');
             }
+    }
+
+    // VIEW TASKS
+    public function viewAllTask(){
+        $tasks = Task::all();
+        return view('view-to-do-tasks', compact('tasks'));
     }
 }
