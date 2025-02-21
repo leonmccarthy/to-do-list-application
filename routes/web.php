@@ -24,7 +24,10 @@ Route::middleware('auth')->group(function(){
     // VIEW TO DO TASKS
     Route::get('/my-tasks', [TaskController::class, 'viewAllTask'])->name('my-tasks');
 
-    // EDIT ERROR VIEW
+    // EDIT TASK VIEW
     Route::get('/edit-task/{id}', [TaskController::class, 'editTaskView'])->name('edit-task-view');
+
+    // EDIT TASK ACTION
+    Route::post('edit-task/{id}', [TaskController::class, 'editTaskAction'])->name('edit-task-action');
 });
 

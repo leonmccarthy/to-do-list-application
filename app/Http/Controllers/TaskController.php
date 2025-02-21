@@ -43,4 +43,25 @@ class TaskController extends Controller
         $task = Task::find($id);
         return view('edit-tasks', compact('task'));
     }
+
+    // EDIT TASK ACTION
+    public function editTaskAction(Request $request, $id){
+        $validator = Validator::make($request->all(), [
+            'taskTitle'=>'required|string|min:3|max:255',
+            'taskDescription'=>'required|string|min:3|max:255',
+            'taskPriority'=>'required|string|min:3|max:255',
+        ]);
+
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator);
+        }else{
+            Task::where('id', $id)->update([
+                'taskTitle'=>$request->input('taskTitle'),
+                'taskDescription'=>$request->input('taskDescription'),
+                'taskPriority'=>$request->input('taskPriority'),
+            ]);
+
+            return redirect()->route('my-tasks')->with('success', 'Task updated successfully');
+        }
+    }
 }

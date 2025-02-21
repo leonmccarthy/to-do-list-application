@@ -27,7 +27,7 @@
                         </div>    
                     @endif
 
-                    <form>
+                    <form method="POST" enctype="multipart/form-data" action="{{ route('edit-task-action', $task->id) }}">
                         @csrf
                         <div class="mb-3">
                           <label for="taskTitle" class="form-label">Task Title</label>
