@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TaskController;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', function () {
     return view('welcome');
@@ -29,5 +30,8 @@ Route::middleware('auth')->group(function(){
 
     // EDIT TASK ACTION
     Route::post('edit-task/{id}', [TaskController::class, 'editTaskAction'])->name('edit-task-action');
+
+    // DELETE TASK
+    Route::get('delete-task/{id}', [TaskController::class, 'deleteTask'])->name('delete-task');
 });
 

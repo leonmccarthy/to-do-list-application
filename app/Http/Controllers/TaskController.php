@@ -28,7 +28,7 @@ class TaskController extends Controller
                     'taskOwner'=>Auth::user()->name,
                 ]);
 
-                return redirect()->route('home')->with('success', 'Task added successfully');
+                return redirect()->route('my-tasks')->with('success', 'Task added successfully');
             }
     }
 
@@ -61,7 +61,13 @@ class TaskController extends Controller
                 'taskPriority'=>$request->input('taskPriority'),
             ]);
 
-            return redirect()->route('my-tasks')->with('success', 'Task updated successfully');
+            return redirect()->route('my-tasks')->with('success', 'Task updated successfully!');
         }
+    }
+
+    // DELETE TASK
+    public function deleteTask($id){
+        Task::where('id', $id)->delete();
+        return redirect()->route('my-tasks')->with('success', 'Task deleted successfully!');
     }
 }
